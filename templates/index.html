@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="number"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+        h2 {
+            text-align: center;
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <h1>House Price Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="area">Area (sqft):</label>
+        <input type="number" step="any" name="area" required>
+
+        <label for="bhk">BHK:</label>
+        <input type="number" name="bhk" required>
+
+        <label for="bathroom">Bathrooms:</label>
+        <input type="number" name="bathroom" required>
+
+        <label for="price">Price Per Square Feet:</label>
+        <input type="number" step="any" name="price" required>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if data is not none %}
+        <h2>Predicted Price: ₹{{ data }}</h2>
+    {% endif %}
+</body>
+</html>
